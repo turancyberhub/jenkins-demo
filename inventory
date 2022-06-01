@@ -1,3 +1,3 @@
 [k8s]
 k8s ansible_host=x.x.x.x
-k8s ansible_ssh_private_key_file=/home/ec2-user/ansible_DevOps2022/ssh-key.pem
+k8s ansible_ssh_private_key_file=/home/ec2-user/jenkins-demo/ssh-key.pem
