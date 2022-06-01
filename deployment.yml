@@ -1,25 +1,26 @@
-apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
-kind: Deployment
+apiVersion: apps/v1
+kind: StatefulSet
 metadata:
-  name: java-app
+  name: jma-discovery
+  labels: 
+     app: jma-discovery
 spec:
+  serviceName: "jma-discovery"
+  podManagementPolicy: "Parallel"
+  replicas: 1
   selector:
     matchLabels:
-      app: devops-project
-  replicas: 2 # tells deployment to run 2 pods matching the template
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
+      app: jma-discovery
   template:
     metadata:
       labels:
-        app: devops-project
+        app: jma-discovery
     spec:
+      imagePullSecrets:
+      - name: docker-registry-key
       containers:
-      - name: devops-project
-        image: islom1997/java-app:1.0
+      - name: jma-discovery
+        image: image-location
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080
+        - containerPort: 8888
