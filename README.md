@@ -11,11 +11,10 @@
     
     vi inventory 
     k8s ansible_host=<Private IP>
-    jenkins ansible_host=<Private IP>
+
 
 ### Finally, run the ansible commands one by one 
 
-    ansible-playbook install-jenkins.yml -i inventory
     ansible-playbook install-k8s.yml -i inventory
 
 
